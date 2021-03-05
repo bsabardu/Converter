@@ -1,0 +1,19 @@
+@use 'src/styles/vars';
+
+.result {
+  background-color: vars.$color-white;
+  padding: 2rem 1rem;
+  color: vars.$color-brown;
+
+  &__number {
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 1rem 0;
+    display: block;
+  }
+
+  &__currency {
+    font-weight: 300;
+    font-size: 1.5rem;
+  }
+}

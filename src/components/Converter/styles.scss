@@ -1,0 +1,9 @@
+@use 'src/styles/vars';
+
+.converter {
+  width: 300px;
+  background-color: vars.$color-white;
+  margin: 1em auto;
+  text-align: center;
+}
+

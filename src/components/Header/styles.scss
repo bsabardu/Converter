@@ -1,0 +1,18 @@
+@use 'src/styles/vars';
+
+.header {
+  background-color: vars.$color-brown;
+  padding: 2rem 1rem;
+  color: vars.$color-white;
+
+  &__title {
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+
+  &__subtitle{
+    font-weight: 300;
+    font-size: 1.5rem;
+  }
+}
