@@ -1,28 +1,27 @@
 @use 'src/styles/vars';
 
-.currencies {
-  max-height: 300px;
-  overflow-y: scroll;
-
-  .currency {
-    text-align: left;
-    padding: 1rem 1rem;
-    font-weight: 500;
-    color: vars.$color-brown;
+.currency {
+  text-align: left;
+  padding: 1rem 1rem;
+  font-weight: 500;
+  color: vars.$color-brown;
+  
+  &:not(:last-child){
     border-bottom: solid 1px vars.$color-brown;
-    transition: vars.$transition-slow;
+  }
+  transition: vars.$transition-slow;
 
 
-    &:first-child{
-      font-weight: 700;
-    }
+  &:first-child{
+    font-weight: 700;
+  }
 
-    &:hover {
+  &:not(.currency--title){
+  &:hover {
       background-color: vars.$color-lightbrown;
       transition: vars.$transition-fast;
-
     }
-  
-  }
-}
 
+  }
+
+}

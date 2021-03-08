@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 // Sub components
 import Currency from 'src/components/Currency';
 
@@ -13,15 +12,22 @@ import './styles.scss';
 const Currencies = ({ currencies }) => (
   <div className="currencies">
     <ul className="currencies_list">
-      <li className="currency">Currency</li>
-      {currencies.map((currency) => <Currency key={currency.name + currency.rate} {...currency} />)}
+      <li className="currency currency--title">Currency</li>
+
+      {currencies.length ? (
+        currencies.map((currency) => <Currency key={currency.name} {...currency} />)
+      ) : (
+        <h2>Pas de données à afficher</h2>
+      )}
     </ul>
   </div>
 );
 
 Currencies.propTypes = {
   currencies: PropTypes.arrayOf(
-    PropTypes.object.isRequired,
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }),
   ),
 };
 

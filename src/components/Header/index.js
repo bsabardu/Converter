@@ -1,16 +1,26 @@
 // == Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // == Import
 import './styles.scss';
 
 // == Composant
-const Header = () => (
+const Header = ({ baseAmount }) => (
   <header className="header">
     <h1 className="header__title">Converter</h1>
-    <h2 className="header__subtitle">1 euro</h2>
+    <h2 className="header__subtitle">{baseAmount} euro</h2>
   </header>
 );
+
+Header.propTypes = {
+  baseAmount: PropTypes.number,
+}
+
+Header.defaultProps = {
+  baseAmount: 1,
+
+};
 
 // == Export
 export default Header;

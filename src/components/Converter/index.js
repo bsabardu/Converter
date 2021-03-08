@@ -14,13 +14,21 @@ import Result from 'src/components/Result';
 import currenciesData from 'src/data/currencies';
 
 // == Composant
-const Converter = () => (
-  <div className="converter">
-    <Header />
-    <Currencies currencies={currenciesData} />
-    <Result />
-  </div>
-);
+const Converter = () => {
+  const currentCurrency = currenciesData[0];
+  const baseAmount = 1;
+
+  return (
+    <div className="converter">
+      <Header baseAmount={baseAmount} />
+      <Currencies currencies={currenciesData} />
+      <Result
+        currencyName={currentCurrency.name}
+        currencyRate={currentCurrency.rate * baseAmount}
+      />
+    </div>
+  );
+};
 
 // == Export
 export default Converter;
