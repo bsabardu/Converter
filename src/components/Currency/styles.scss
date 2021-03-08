@@ -5,6 +5,12 @@
   padding: 1rem 1rem;
   font-weight: 500;
   color: vars.$color-brown;
+
+  &--selected {
+    background-color: vars.$color-brown;
+    color: vars.$color-white;
+    transition: none;
+  }
   
   &:not(:last-child){
     border-bottom: solid 1px vars.$color-brown;

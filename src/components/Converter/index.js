@@ -20,8 +20,10 @@ class Converter extends Component {
     // On appelle le constructeur du parent grâce à la fonction super
     super(props);
     // Puis on déclare le state avec son état initial même vide.
+
     this.state = {
       open: true,
+      currency: 'Australian Dollar',
     };
   }
 
@@ -30,10 +32,17 @@ class Converter extends Component {
     this.setState({ open: !open });
   };
 
+  handleCurrencySelect = (name) => {
+    this.setState({ currency: name });
+  };
+
   render() {
-    const { open } = this.state;
+    const { open, currency } = this.state;
     // Je destructure mon state pour récupérer ce qui m'intéresse
-    const currentCurrency = currenciesData[0];
+    const currentCurrency = currenciesData.find((elt) => (
+      elt.name === currency
+    ));
+
     const baseAmount = 2;
 
     return (
@@ -43,7 +52,13 @@ class Converter extends Component {
           currenciesOpenState={open}
           onToggleClick={this.handleToggleClick}
         />
-        {open && <Currencies currencies={currenciesData} />}
+        {open && (
+          <Currencies
+            currencies={currenciesData}
+            handleCurrencySelect={this.handleCurrencySelect}
+            selectedCurrency={currency}
+          />
+        )}
         <Result
           currencyName={currentCurrency.name}
           currencyRate={currentCurrency.rate * baseAmount}

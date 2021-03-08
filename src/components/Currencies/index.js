@@ -9,13 +9,20 @@ import Currency from 'src/components/Currency';
 import './styles.scss';
 
 // == Composant
-const Currencies = ({ currencies }) => (
+const Currencies = ({ currencies, handleCurrencySelect, selectedCurrency }) => (
   <div className="currencies">
     <ul className="currencies_list">
       <li className="currency currency--title">Currency</li>
 
       {currencies.length ? (
-        currencies.map((currency) => <Currency key={currency.name} {...currency} />)
+        currencies.map((currency) => (
+          <Currency
+            key={currency.name}
+            handleCurrencySelect={handleCurrencySelect}
+            selectedCurrency={selectedCurrency}
+            {...currency}
+          />
+        ))
       ) : (
         <h2>Pas de données à afficher</h2>
       )}
@@ -24,15 +31,19 @@ const Currencies = ({ currencies }) => (
 );
 
 Currencies.propTypes = {
+  selectedCurrency: PropTypes.string,
   currencies: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
     }),
   ),
+  handleCurrencySelect: PropTypes.func,
 };
 
 Currencies.defaultProps = {
+  selectedCurrency: '',
   currencies: [],
+  handleCurrencySelect: () => {},
 
 };
 
