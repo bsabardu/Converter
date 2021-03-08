@@ -1,9 +1,11 @@
 @use 'src/styles/vars';
 
 .header {
+  position: relative;
   background-color: vars.$color-brown;
   padding: 2rem 1rem;
   color: vars.$color-white;
+  min-height: 120px;
 
   &__title {
     font-weight: 700;
@@ -15,4 +17,11 @@
     font-weight: 300;
     font-size: 1.5rem;
   }
+}
+
+.toggle {
+  position: absolute;
+  bottom: -0.75em;
+  left: calc(50% - 0.75em);
+  z-index: 2;
 }
