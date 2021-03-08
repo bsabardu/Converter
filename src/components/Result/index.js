@@ -1,6 +1,7 @@
 // == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
+import Toggle from 'src/components/Toggle';
 
 // == Import
 import './styles.scss';

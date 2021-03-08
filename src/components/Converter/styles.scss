@@ -5,5 +5,30 @@
   background-color: vars.$color-white;
   margin: 1em auto;
   text-align: center;
+
+
+
+  &__toggle {
+    position: relative;
+    margin: auto;
+    top: -30px;
+    height: 2em;
+    width: 2em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    font-size: 2rem;
+    color: vars.$color-brown;
+    transition: vars.$transition-slow;
+    
+    &--open{
+      transform: rotate(90deg)
+    }
+  
+  }
+
+
 }
 
