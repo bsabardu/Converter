@@ -9,10 +9,10 @@ import Toggle from 'src/components/Toggle';
 import './styles.scss';
 
 // == Composant
-const Header = ({ baseAmount, currenciesOpenState, onToggleClick }) => (
+const Header = ({ baseAmount, currenciesOpenState, onToggleClick, onAmountChange }) => (
   <header className="header">
     <h1 className="header__title">Converter</h1>
-    <h2 className="header__subtitle">{baseAmount} euro</h2>
+    <h2 className="header__subtitle"><input className="header__amount-input" onChange={onAmountChange} value={baseAmount} />{baseAmount > 1 ? 'euros' : 'euro' }</h2>
     <Toggle activated={currenciesOpenState} onToggleClick={onToggleClick} />
   </header>
 );

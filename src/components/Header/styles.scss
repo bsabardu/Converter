@@ -17,6 +17,24 @@
     font-weight: 300;
     font-size: 1.5rem;
   }
+
+  &__amount-input{
+    font-family: inherit;
+    display: inline;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+    border: 0;
+    width: 100px;
+    background: transparent;
+    text-align: right;
+    margin-right: 2px;
+
+  }
+  &__amount-input:hover {
+    box-sizing: border-box;
+        border: 1px solid vars.$color-lightbrown;
+      }
 }
 
 .toggle {

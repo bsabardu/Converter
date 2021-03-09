@@ -29,6 +29,18 @@ class Converter extends Component {
     };
   }
 
+  componentDidMount() {
+    this.updateTitle();
+  }
+
+  componentDidUpdate(prevProprs, prevState) {
+    const { currentCurrency, open } = this.state;
+    // Pour éviter de mettre à jour le nom si qq chose d'autre que open ou currentCurrency a changé on test
+    if (prevState.open !== open || prevState.currentCurrency !== currentCurrency) {
+      this.updateTitle();
+    }
+  }
+
   handleToggleClick = () => {
     const { open } = this.state;
     this.setState({ open: !open });
@@ -48,6 +60,19 @@ class Converter extends Component {
     });
   };
 
+  handleAmountChange = (event) => {
+    // On récupère la valeur réellee du champs avant imposition par la value
+    const amount = event.target.value;
+    this.setState({
+      baseAmount: amount,
+    });
+  };
+
+  updateTitle() {
+    const { currentCurrency, open } = this.state;
+    document.title = open ? currentCurrency.name : 'Converter';
+  }
+
   render() {
     const {
       open,
@@ -63,6 +88,7 @@ class Converter extends Component {
           baseAmount={baseAmount}
           currenciesOpenState={open}
           onToggleClick={this.handleToggleClick}
+          onAmountChange={this.handleAmountChange}
         />
         {open && (
           <Currencies
