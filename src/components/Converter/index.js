@@ -25,6 +25,7 @@ class Converter extends Component {
       open: true,
       currentCurrency: currenciesData[0],
       baseAmount: 2,
+      search: '',
     };
   }
 
@@ -39,10 +40,22 @@ class Converter extends Component {
     });
   };
 
-  render() {
-    const { open, currentCurrency, baseAmount } = this.state;
-    // Je destructure mon state pour récupérer ce qui m'intéresse
+  handleSearchChange = (event) => {
+    // On récupère la valeur réellee du champs avant imposition par la value
+    const search = event.target.value;
+    this.setState({
+      search,
+    });
+  };
 
+  render() {
+    const {
+      open,
+      currentCurrency,
+      baseAmount,
+      search,
+    } = this.state;
+    // Je destructure mon state pour récupérer ce qui m'intéresse
 
     return (
       <div className="converter">
@@ -56,6 +69,8 @@ class Converter extends Component {
             currencies={currenciesData}
             handleCurrencySelect={this.handleCurrencySelect}
             selectedCurrency={currentCurrency}
+            search={search}
+            onSearchChange={this.handleSearchChange}
           />
         )}
         <Result

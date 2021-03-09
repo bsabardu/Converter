@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 // == Composant
-const Currency = ({ name, onClick, selectedCurrency }) => (
+const Currency = ({ name, onClick, activated }) => (
   <li
-    className={selectedCurrency.name === name ? 'currency currency--selected' : 'currency'}
+    className={activated ? 'currency currency--selected' : 'currency'}
     onClick={onClick}
   >{name}
   </li>
@@ -16,13 +16,13 @@ const Currency = ({ name, onClick, selectedCurrency }) => (
 
 // On déclare le type de props attendu
 Currency.propTypes = {
-  selectedCurrency: PropTypes.object,
+  activated: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 
 Currency.defaultProps = {
-  selectedCurrency: {},
+  activated: false,
   onClick: () => {},
 };
 

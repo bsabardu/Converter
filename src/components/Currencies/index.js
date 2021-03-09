@@ -8,44 +8,64 @@ import Currency from 'src/components/Currency';
 // == Import
 import './styles.scss';
 
-// == Composant
-const Currencies = ({ currencies, handleCurrencySelect, selectedCurrency }) => (
-  <div className="currencies">
-    <ul className="currencies_list">
-      <li className="currency currency--title">Currency</li>
+import { searchItem } from 'src/selector';
 
-      {currencies.length ? (
-        currencies.map((currency) => (
-          <Currency
-            key={currency.name}
-            onClick={() => {
-              handleCurrencySelect(currency);
-            }}
-            selectedCurrency={selectedCurrency}
-            {...currency}
-          />
-        ))
-      ) : (
-        <h2>Pas de données à afficher</h2>
-      )}
-    </ul>
-  </div>
-);
+// == Composant
+const Currencies = ({
+  currencies,
+  handleCurrencySelect,
+  selectedCurrency,
+  search,
+  onSearchChange,
+}) => {
+  const filteredCurrencies = searchItem(currencies, search);
+
+  return (
+    <div className="currencies">
+      <input type="text" className="currencies__filter-input" placeholder="Currencies" value={search} onChange={onSearchChange} />
+      <ul className="currencies_list">
+
+        {filteredCurrencies.length ? (
+          filteredCurrencies.map((currency) => (
+            <Currency
+              key={currency.name}
+              onClick={() => {
+                handleCurrencySelect(currency);
+              }}
+              activated={selectedCurrency && (selectedCurrency.name === currency.name)}
+              {...currency}
+            />
+          ))
+        ) : (
+          <h2>Pas de données à afficher</h2>
+        )}
+      </ul>
+    </div>
+  );
+};
 
 Currencies.propTypes = {
-  selectedCurrency: PropTypes.string,
+  selectedCurrency: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }),
   currencies: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
     }),
   ),
   handleCurrencySelect: PropTypes.func,
+  onSearchChange: PropTypes.func,
+  activated: PropTypes.bool,
+  search: PropTypes.string,
 };
 
 Currencies.defaultProps = {
-  selectedCurrency: '',
+  selectedCurrency: {},
   currencies: [],
   handleCurrencySelect: () => {},
+  onSearchChange: () => {},
+  activated: false,
+  search: '',
 
 };
 
