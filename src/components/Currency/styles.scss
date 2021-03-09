@@ -22,7 +22,7 @@
     font-weight: 700;
   }
 
-  &:not(.currency--title){
+  &:not(.currency--title, .currency--selected){
   &:hover {
       background-color: vars.$color-lightbrown;
       transition: vars.$transition-fast;

@@ -18,7 +18,9 @@ const Currencies = ({ currencies, handleCurrencySelect, selectedCurrency }) => (
         currencies.map((currency) => (
           <Currency
             key={currency.name}
-            handleCurrencySelect={handleCurrencySelect}
+            onClick={() => {
+              handleCurrencySelect(currency);
+            }}
             selectedCurrency={selectedCurrency}
             {...currency}
           />

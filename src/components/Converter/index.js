@@ -23,7 +23,8 @@ class Converter extends Component {
 
     this.state = {
       open: true,
-      currency: 'Australian Dollar',
+      currentCurrency: currenciesData[0],
+      baseAmount: 2,
     };
   }
 
@@ -32,18 +33,16 @@ class Converter extends Component {
     this.setState({ open: !open });
   };
 
-  handleCurrencySelect = (name) => {
-    this.setState({ currency: name });
+  handleCurrencySelect = (currency) => {
+    this.setState({
+      currentCurrency: currency,
+    });
   };
 
   render() {
-    const { open, currency } = this.state;
+    const { open, currentCurrency, baseAmount } = this.state;
     // Je destructure mon state pour récupérer ce qui m'intéresse
-    const currentCurrency = currenciesData.find((elt) => (
-      elt.name === currency
-    ));
 
-    const baseAmount = 2;
 
     return (
       <div className="converter">
@@ -56,12 +55,12 @@ class Converter extends Component {
           <Currencies
             currencies={currenciesData}
             handleCurrencySelect={this.handleCurrencySelect}
-            selectedCurrency={currency}
+            selectedCurrency={currentCurrency}
           />
         )}
         <Result
           currencyName={currentCurrency.name}
-          currencyRate={currentCurrency.rate * baseAmount}
+          currencyResult={currentCurrency.rate * baseAmount}
         />
       </div>
     );

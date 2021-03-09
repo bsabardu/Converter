@@ -7,11 +7,11 @@ import Toggle from 'src/components/Toggle';
 import './styles.scss';
 
 // == Composant
-const Result = ({ currencyName, currencyRate }) => (
+const Result = ({ currencyName, currencyResult }) => (
   <div className="result">
     {
-      (currencyRate !== null)
-    && <h1 className="result__number">{ currencyRate.toFixed(2) }</h1>
+      (currencyResult !== null)
+    && <h1 className="result__number">{ currencyResult.toFixed(2) }</h1>
     }
     {
       currencyName
@@ -22,12 +22,12 @@ const Result = ({ currencyName, currencyRate }) => (
 
 Result.propTypes = {
   currencyName: PropTypes.string,
-  currencyRate: PropTypes.number,
+  currencyResult: PropTypes.number,
 };
 
 Result.defaultProps = {
   currencyName: '',
-  currencyRate: null,
+  currencyResult: null,
 };
 
 // == Export
