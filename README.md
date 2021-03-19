@@ -1,6 +1,6 @@
-# Convertisseur
+# Converter
 
-Simple Euro / XX Convert in React
+Simple Euro / XX Converter in React
 
 Convert rates are stored in local through a json file.
 
