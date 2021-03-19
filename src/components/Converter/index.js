@@ -12,7 +12,6 @@ import Result from 'src/components/Result';
 // == Data
 
 import currenciesData from 'src/data/currencies';
-
 // == Composant
 class Converter extends Component {
   // On initialise le composant
